@@ -34,13 +34,13 @@ module Binance
 
         def create!(icebergQuantity: nil, newClientOrderId: nil, newOrderResponseType: nil,
                     price: nil, quantity: nil, recvWindow: nil, stopPrice: nil, symbol: nil,
-                    side: nil, type: nil, timeInForce: nil, test: false)
+                    side: nil, type: nil, timeInForce: nil, quoteOrderQty: nil, test: false)
           timestamp = Configuration.timestamp
           params = {
             icebergQty: icebergQuantity, newClientOrderId: newClientOrderId,
             newOrderRespType: newOrderResponseType, price: price, quantity: quantity,
             recvWindow: recvWindow, stopPrice: stopPrice, symbol: symbol, side: side,
-            type: type, timeInForce: timeInForce, timestamp: timestamp,
+            type: type, timeInForce: timeInForce, quoteOrderQty: quoteOrderQty, timestamp: timestamp,
           }.delete_if { |key, value| value.nil? }
           ensure_required_create_keys!(params: params)
           path = "/api/v3/order#{"/test" if test}"
