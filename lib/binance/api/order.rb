@@ -85,7 +85,7 @@ module Binance
         end
 
         def required_create_keys
-          [:symbol, :side, :type, :quantity, :timestamp].freeze
+          [:symbol, :side, :type, :timestamp].freeze
         end
       end
     end
